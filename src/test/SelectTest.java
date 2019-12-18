@@ -39,7 +39,7 @@ public class SelectTest {
 			}
 			
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패: " + e);
+			System.out.println("Failed to load JDBC driver: " + e);
 		} catch(SQLException e){
 			System.out.println("Error: "+ e);
 		} finally {
