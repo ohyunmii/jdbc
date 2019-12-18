@@ -9,7 +9,8 @@ public class DeleteTest {
 	boolean result = false;
 
 	public static void main(String[] args) {
-		delete(3L);
+		Boolean result = delete(3L);
+		System.out.println(result);
 	}
 	
 	
