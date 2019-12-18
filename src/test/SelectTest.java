@@ -21,6 +21,8 @@ public class SelectTest {
 			String url = "jdbc:mysql://localhost:3306/webdb?characterEncoding=utf8";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 			
+	
+			
 			//	3. Create Statement Object
 			stmt = conn.createStatement();
 			
@@ -35,8 +37,9 @@ public class SelectTest {
 				String lastName = rs.getString(3);
 				String email = rs.getString(4);
 				
-				System.out.println(no + ":" + firstName +":" + lastName +":"+ email);
+				System.out.println(no + ". First name: " + firstName +"\t Last name: " + lastName +"\t Email:"+ email);
 			}
+			
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("Failed to load JDBC driver: " + e);
@@ -49,7 +52,6 @@ public class SelectTest {
 				if(stmt!=null) stmt.close();
 				if(conn!=null) conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
