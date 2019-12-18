@@ -1,22 +1,20 @@
-package test;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertTest {
-	boolean result = false;
+import vo.EmailListVo;
 
+public class EmailListDao {
 	public static void main(String[] args) {
-		insert("Dough", "Nut", "doughnut@gmail.com");
-		insert("Ddo", "Chi", "ddochi@gmail.com");
+		
 	}
-	
-	
-	
+
+	// remove static to make this an instance
 	@SuppressWarnings("finally")
-	public static Boolean insert(String firstName, String lastName, String email) {
+	public Boolean insert(EmailListVo vo) {
 		Boolean result=false;
 		Connection conn = null;
 		Statement stmt = null;
@@ -33,7 +31,7 @@ public class InsertTest {
 			stmt = conn.createStatement();
 			
 			//	4. Execute SQL Statment
-			String sql = "insert into emaillist values(null,'"+firstName+"','"+ lastName+"','"+email+"')";
+			String sql = "insert into emaillist values(null,'"+vo.getFirstName()+"','"+ vo.getLastName()+"','"+vo.getEmail()+"')";
 			
 			int count = stmt.executeUpdate(sql);
 			result = (count==1);
@@ -48,6 +46,7 @@ public class InsertTest {
 			try {
 				if(conn!=null) conn.close();
 				if(stmt!=null) stmt.close();
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -55,6 +54,5 @@ public class InsertTest {
 		}
 	
 	}
-
 
 }
