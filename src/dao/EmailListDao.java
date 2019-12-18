@@ -40,9 +40,9 @@ public class EmailListDao {
 			// Show Results
 			while (rs.next()) {
 				Long no = rs.getLong(1);
-				String firstName = rs.getString(4);
+				String firstName = rs.getString(2);
 				String lastName = rs.getString(3);
-				String email = rs.getString(2);
+				String email = rs.getString(4);
 
 				EmailListVo vo = new EmailListVo();
 				vo.setNo(no);
@@ -52,8 +52,7 @@ public class EmailListDao {
 
 				voList.add(vo);
 
-				System.out
-						.println(no + ". First name: " + firstName + "\t Last name: " + lastName + "\t Email:" + email);
+				System.out.println(no + ". First name: " + firstName + "\t Last name: " + lastName + "\t Email:" + email);
 			}
 
 		} catch (ClassNotFoundException e) {
@@ -90,8 +89,8 @@ public class EmailListDao {
 			stmt = conn.createStatement();
 
 			// Execute SQL Statment
-			String sql = "insert into emaillist values(null,'" + vo.getFirstName() + "','" + vo.getLastName() + "','"
-					+ vo.getEmail() + "')";
+			String sql = "insert into emaillist values(null,'" + vo.getEmail() + "','" + vo.getLastName() + "','"
+					+vo.getFirstName() + "')";
 
 			int count = stmt.executeUpdate(sql);
 			result = (count == 1);
